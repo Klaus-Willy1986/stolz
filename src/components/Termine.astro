@@ -11,7 +11,7 @@ const liste = [...maerkte].sort((a, b) => a.datum.localeCompare(b.datum));
 <ul class="etiketten" data-termine data-anzahl={anzahl}>
   {liste.map((m) => (
     <li class="etikett" data-ende={m.bis || m.datum}>
-      <time datetime={m.datum}>{wann(m.datum, m.bis)}</time>
+      <time datetime={m.datum}>{wann(m.datum, m.bis)}{m.zeit && ` · ${m.zeit}`}</time>
       <strong>{m.name}</strong>
       <span>{m.ort}</span>
     </li>
