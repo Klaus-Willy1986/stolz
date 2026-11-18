@@ -1,0 +1,90 @@
+---
+import { Image } from 'astro:assets';
+import Seite from '../layouts/Seite.astro';
+import Foto from '../components/Foto.astro';
+import Termine from '../components/Termine.astro';
+import logo from '../assets/logo.png';
+const kollektion = [
+  { id: 'stoff', name: 'Stoff', text: 'Genäht. Damit hat alles angefangen.' },
+  { id: 'holz', name: 'Holz', text: 'Gelasert und graviert, gern mit Namen oder deinem Motiv.' },
+  { id: 'garn', name: 'Garn', text: 'Gehäkelt. Körbchen, Kürbisse und Tabletts, Masche für Masche.' },
+  { id: 'gips', name: 'Gips', text: 'Gegossen, geschliffen und von Hand veredelt.' },
+];
+---
+<Seite titel="Start">
+  <section class="hero">
+    <div class="wrap">
+      <Image src={logo} alt="st.o.lz – Stoff und Holz" class="hero-logo" widths={[340, 680]} sizes="(min-width: 30rem) 17rem, 58vw" loading="eager" />
+      <p class="hand">Handgemacht in Niddatal</p>
+      <h1>Aus Stoff und Holz.<br /><em>Ganz leise stolz.</em></h1>
+      <p class="lead">Kleine, feine Dinge aus Stoff, Holz, Garn und Gips. Schlicht, natürlich und mit viel Liebe zur Handarbeit gemacht.</p>
+      <div class="knoepfe">
+        <a class="knopf" href="/produkte/">Stöbern</a>
+        <a class="knopf hell" href="/kontakt/">Wunsch anfragen</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <div class="kopfzeile zeig">
+        <div><p class="hand">Was hier entsteht</p><h2>Stoff, Holz, Garn und Gips</h2></div>
+        <p>Vieles gibt es nur einmal. Manches mache ich auf Wunsch noch einmal.</p>
+      </div>
+      <ol class="index">
+        {kollektion.map((k, i) => (
+          <li class="zeig" style={`--warte:${i * 0.06}s`}>
+            <a href={`/produkte/#${k.id}`}>
+              <span class="i-nr">0{i + 1}</span>
+              <span class="i-name">{k.name}</span>
+              <span class="i-text">{k.text}</span>
+              <span class="i-pfeil" aria-hidden="true">→</span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="flaeche salbeiflaeche">
+    <div class="wrap zwei">
+      <div class="zeig"><Foto unterschrift="Claudia Stehr" /></div>
+      <div class="zeig" style="--warte:.1s">
+        <p class="hand">Über st.o.lz</p>
+        <h2>Aus einem Traum und einem <em>kleinen bisschen Mut</em></h2>
+        <p>Vor vielen Jahren hatte ich den Traum, auf einem kleinen Weihnachtsmarkt Handgemachtes aus Stoff und Holz zu verkaufen. Der Name war schnell gefunden: st.o.lz. Dann fehlten lange die Zeit und der Mut. Im Herbst 2025 habe ich mich getraut.</p>
+        <p><a href="/ueber-mich/">Die ganze Geschichte</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <p class="hand zeig">Handarbeit</p>
+      <h2 class="zeig">Warum Handgemachtes Zeit braucht</h2>
+      <ol class="schritte">
+        <li class="zeig"><h3>Die Idee</h3><p>In meinem Kopf sieht jedes Stück schon fertig aus. Bis dahin ist es meistens noch ein gutes Stück Weg.</p></li>
+        <li class="zeig" style="--warte:.1s"><h3>Der Prototyp</h3><p>Ausprobieren, merken, dass etwas nicht passt, wieder aufmachen und von vorn anfangen. Aufgeben gibt es nicht.</p></li>
+        <li class="zeig" style="--warte:.2s"><h3>Das fertige Stück</h3><p>Am Ende siehst du nur das Ergebnis. Zeit, Material, Übung und ein bisschen Geduld stecken trotzdem drin.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="flaeche holzflaeche">
+    <div class="wrap">
+      <p class="hand">Termine</p>
+      <h2>Die nächsten Märkte</h2>
+      <Termine anzahl={3} />
+      <div class="knoepfe" style="justify-content:flex-start"><a class="knopf hell" href="/maerkte/">Alle Termine</a></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap mitte text zeig">
+      <p class="hand">Auf Wunsch</p>
+      <h2>Du suchst etwas <em>Bestimmtes?</em></h2>
+      <p class="lead">Mit Namen, in deiner Lieblingsfarbe oder als Geschenk. Schreib mir, was du dir vorstellst, und ich schaue, was möglich ist.</p>
+      <div class="knoepfe"><a class="knopf" href="/kontakt/">Anfrage schreiben</a></div>
+    </div>
+  </section>
+</Seite>

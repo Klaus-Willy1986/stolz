@@ -1,0 +1,8 @@
+[
+  { "material": "stoff", "name": "Beispiel: Kosmetiktäschchen", "text": "Genäht aus Baumwollstoff, gefüttert, mit Reißverschluss.", "verkauft": false },
+  { "material": "stoff", "name": "Beispiel: Utensilo", "text": "Stoffkörbchen für alles, was sonst herumliegt.", "verkauft": true },
+  { "material": "holz", "name": "Beispiel: Namensschild", "text": "Aus Holz gelasert, mit deinem Wunschnamen.", "verkauft": false },
+  { "material": "holz", "name": "Beispiel: Schlüsselanhänger", "text": "Graviert, mit Motiv oder Schriftzug.", "verkauft": false },
+  { "material": "garn", "name": "Beispiel: Häkelkörbchen", "text": "Gehäkelt aus dickem Garn, in mehreren Farben.", "verkauft": false },
+  { "material": "gips", "name": "Beispiel: Kerzenhalter", "text": "Gegossen und von Hand geschliffen.", "verkauft": false }
+]

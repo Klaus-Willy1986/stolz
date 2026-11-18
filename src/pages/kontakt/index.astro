@@ -1,0 +1,34 @@
+---
+import Seite from '../../layouts/Seite.astro';
+import Welle from '../../components/Welle.astro';
+---
+<Seite titel="Kontakt" beschreibung="Schreib mir deine Anfrage – für Bestellungen, Wünsche und Fragen.">
+  <section class="block">
+    <div class="wrap zwei" style="align-items:start">
+      <div>
+        <p class="hand">Schreib mir</p>
+        <h1>Kontakt</h1>
+        <p>Du suchst etwas Bestimmtes, hast einen Wunsch oder eine Frage? Ich freue mich über deine Nachricht und melde mich so schnell wie möglich.</p>
+        <p>Du kannst mir auch auf Instagram schreiben:{' '}
+          <a href="https://ig.me/m/st.o.lz_stoff_und_holz" rel="noopener">Nachricht auf Instagram</a>.</p>
+      </div>
+      <form class="kontakt" action="/senden.php" method="post">
+        <label>Dein Name
+          <input name="name" required maxlength="100" autocomplete="name" />
+        </label>
+        <label>Deine E-Mail-Adresse
+          <input type="email" name="email" required maxlength="150" autocomplete="email" />
+        </label>
+        <label>Deine Nachricht
+          <textarea name="nachricht" required maxlength="4000"></textarea>
+        </label>
+        <div class="falle" aria-hidden="true">
+          <label>Bitte leer lassen <input name="website" tabindex="-1" autocomplete="off" /></label>
+        </div>
+        <p class="klein" style="margin:0">Mit dem Absenden stimmst du zu, dass ich deine Angaben zur Beantwortung deiner Anfrage verwende. Mehr dazu in der <a href="/datenschutz/">Datenschutzerklärung</a>.</p>
+        <p style="margin:0"><button class="knopf" type="submit">Nachricht senden</button></p>
+      </form>
+    </div>
+    <Welle lage="unten" />
+  </section>
+</Seite>

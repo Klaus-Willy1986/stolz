@@ -1,0 +1,54 @@
+---
+// Kleine Strichzeichnungen in der Linie des Logos.
+interface Props { name: 'baumwolle' | 'stoff' | 'holz' | 'garn' | 'gips' | 'herz'; groesse?: number; }
+const { name, groesse = 48 } = Astro.props;
+---
+<svg class="zeichnung" width={groesse} height={groesse} viewBox="0 0 48 48" fill="none" stroke="currentColor"
+  stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  {name === 'baumwolle' && (
+    <g fill="var(--creme)">
+      <path d="M24 31v10" />
+      <path d="M24 38c-6 0-9-3-9.500-7.500 5 0 9 2.500 9.500 7.500z" />
+      <path d="M24 38c6 0 9-3 9.500-7.500-5 0-9 2.500-9.500 7.500z" />
+      <circle cx="17" cy="23" r="6.500" />
+      <circle cx="31" cy="23" r="6.500" />
+      <circle cx="24" cy="17" r="7" />
+    </g>
+  )}
+  {name === 'stoff' && (
+    <g>
+      <path d="M14 9h20M14 39h20" />
+      <path d="M17 9c-1 2-1 4 0 5v20c-1 1-1 3 0 5M31 9c1 2 1 4 0 5v20c1 1 1 3 0 5" />
+      <path d="M17 18l14-3M17 23l14-3M17 28l14-3M17 33l14-3" />
+      <path d="M31 30c5 1 8 4 9 9" />
+      <path d="M39 37l3 5" />
+    </g>
+  )}
+  {name === 'holz' && (
+    <g>
+      <path d="M24 6c10 0 18 7 18 17s-7 19-18 19S6 34 6 24 14 6 24 6z" />
+      <path d="M24 11c7 0 13 5 13 12.500S31 37 24 37s-13-5.500-13-13S17 11 24 11z" />
+      <path d="M24 16.500c4.500 0 8 3 8 7.500s-3.500 8-8 8-8-3.500-8-8 3.500-7.500 8-7.500z" />
+      <path d="M24 22a2.500 2.500 0 1 1 0 5 2.500 2.500 0 0 1 0-5z" />
+      <path d="M38 12l3-3M42 24h3" />
+    </g>
+  )}
+  {name === 'garn' && (
+    <g>
+      <circle cx="22" cy="23" r="15" />
+      <path d="M9 17c8 1 17 6 24 16M8 25c7 0 15 4 21 12M13 11c9 2 18 9 23 19M22 8c6 3 12 9 15 16" />
+      <path d="M33 34c3 4 7 6 11 5" />
+    </g>
+  )}
+  {name === 'gips' && (
+    <g>
+      <path d="M17 22h14l3 16a3 3 0 0 1-3 3.500H17a3 3 0 0 1-3-3.500z" />
+      <path d="M15.500 22h17" />
+      <path d="M24 22V9" />
+      <path d="M24 16c-4 0-6-2-6.500-5 3.500 0 6 1.500 6.500 5zM24 12c3.500 0 5.500-2 6-5-3.500 0-5.500 1.500-6 5z" />
+    </g>
+  )}
+  {name === 'herz' && (
+    <path d="M24 39S8 29.500 8 18.500C8 13 12 9.500 16.500 9.500c3 0 6 1.700 7.500 4.500 1.500-2.800 4.500-4.500 7.500-4.500C36 9.500 40 13 40 18.500 40 29.500 24 39 24 39z" />
+  )}
+</svg>

@@ -1,0 +1,37 @@
+---
+import Seite from '../../layouts/Seite.astro';
+import Foto from '../../components/Foto.astro';
+import Zeichnung from '../../components/Zeichnung.astro';
+import produkte from '../../data/produkte.json';
+const gruppen = [
+  { id: 'stoff', titel: 'Stoff' },
+  { id: 'holz', titel: 'Holz' },
+  { id: 'garn', titel: 'Garn' },
+  { id: 'gips', titel: 'Gips' },
+] as const;
+---
+<Seite titel="Produkte" beschreibung="Handgemachtes aus Stoff, Holz, Garn und Gips – Einzelstücke und Wunschanfertigungen von st.o.lz.">
+  <section class="block">
+    <div class="wrap">
+      <div class="text">
+        <p class="hand">Zum Stöbern</p>
+        <h1>Was es bei mir gibt</h1>
+        <p>Hier siehst du eine Auswahl. Vieles gibt es nur einmal, manches mache ich auf Wunsch noch einmal. Perfekt symmetrisch ist nicht alles, und genau das darf Handgemachtes auch sein. Wenn dir etwas gefällt, <a href="/kontakt/">schreib mir einfach</a>.</p>
+      </div>
+      {gruppen.map((g) => (
+        <div class="gruppe" id={g.id}>
+          <h2><Zeichnung name={g.id} groesse={40} /> {g.titel}</h2>
+          <div class="produkte">
+            {produkte.filter((p) => p.material === g.id).map((p, i) => (
+              <article class="produkt zeig" style={`--warte:${i * 0.08}s`}>
+                <Foto zeichnung={g.id} verkauft={p.verkauft} />
+                <h3>{p.name}</h3>
+                <p>{p.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</Seite>

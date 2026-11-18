@@ -1,0 +1,16 @@
+---
+import Seite from '../../layouts/Seite.astro';
+import { anschrift } from '../../data/anschrift';
+---
+<Seite titel="Impressum">
+  <section class="block"><div class="wrap text">
+    <h1>Impressum</h1>
+    <p><strong>st.o.lz | Stoff und Holz</strong><br />
+    Claudia Stehr<br />
+    {anschrift.strasse}<br />
+    {anschrift.ort}</p>
+    <p>E-Mail: <a href="mailto:claudi@stolz-stoffundholz.de">claudi@stolz-stoffundholz.de</a><br />
+    Oder über das <a href="/kontakt/">Kontaktformular</a>.</p>
+    <!-- TODO: USt-IdNr. ergänzen, falls vorhanden -->
+  </div></section>
+</Seite>

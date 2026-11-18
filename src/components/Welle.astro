@@ -1,0 +1,8 @@
+---
+// Geschwungene Kante: liegt oben oder unten auf einem Abschnitt mit Struktur.
+interface Props { lage: 'oben' | 'unten'; }
+const { lage } = Astro.props;
+---
+<svg class={`welle welle-${lage}`} viewBox="0 0 1200 60" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 0h1200v22c-150 34-310 38-470 16S410 4 250 20 80 52 0 34z" fill="currentColor" />
+</svg>

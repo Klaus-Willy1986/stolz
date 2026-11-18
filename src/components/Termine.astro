@@ -1,0 +1,31 @@
+---
+// Markttermine als Etiketten. Vergangene Termine blendet das Skript im Browser aus.
+import maerkte from '../data/maerkte.json';
+interface Props { anzahl?: number; }
+const { anzahl } = Astro.props;
+const fmt = new Intl.DateTimeFormat('de-DE', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+const zeit = (d: string) => new Date(d + 'T00:00:00Z');
+const wann = (von: string, bis: string) => (bis ? fmt.formatRange(zeit(von), zeit(bis)) : fmt.format(zeit(von)));
+const liste = [...maerkte].sort((a, b) => a.datum.localeCompare(b.datum));
+---
+<ul class="etiketten" data-termine data-anzahl={anzahl}>
+  {liste.map((m) => (
+    <li class="etikett" data-ende={m.bis || m.datum}>
+      <time datetime={m.datum}>{wann(m.datum, m.bis)}</time>
+      <strong>{m.name}</strong>
+      <span>{m.ort}</span>
+    </li>
+  ))}
+</ul>
+<p class="leer" data-termine-leer hidden>Die nächsten Termine stehen noch nicht fest. Schau bald wieder vorbei oder folge mir auf Instagram.</p>
+<script is:inline>
+  document.querySelectorAll('[data-termine]').forEach(function (ul) {
+    var heute = new Date().toISOString().slice(0, 10);
+    var max = parseInt(ul.dataset.anzahl || '0', 10);
+    var n = 0;
+    ul.querySelectorAll('li').forEach(function (li) {
+      if (li.dataset.ende < heute || (max && n >= max)) { li.remove(); } else { n++; }
+    });
+    if (!n) { ul.hidden = true; ul.nextElementSibling.hidden = false; }
+  });
+</script>

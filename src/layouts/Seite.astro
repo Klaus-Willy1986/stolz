@@ -1,0 +1,71 @@
+---
+import '@fontsource-variable/cormorant-garamond';
+import '@fontsource-variable/cormorant-garamond/wght-italic.css';
+import '@fontsource-variable/jost';
+import '../styles/global.css';
+import Zeichnung from '../components/Zeichnung.astro';
+import Bogen from '../components/Bogen.astro';
+interface Props { titel: string; beschreibung?: string; }
+const { titel, beschreibung = 'Handgemachtes aus Stoff, Holz, Garn und Gips – mit Herz, Laser und Plotter aus Niddatal.' } = Astro.props;
+const pfad = Astro.url.pathname;
+const nav = [
+  { href: '/', text: 'Start' },
+  { href: '/produkte/', text: 'Produkte' },
+  { href: '/maerkte/', text: 'Märkte' },
+  { href: '/ueber-mich/', text: 'Über mich' },
+  { href: '/kontakt/', text: 'Kontakt' },
+];
+const voll = titel === 'Start' ? 'st.o.lz | Stoff und Holz' : `${titel} – st.o.lz | Stoff und Holz`;
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{voll}</title>
+    <meta name="description" content={beschreibung} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+  </head>
+  <body>
+    <a class="skip" href="#inhalt">Zum Inhalt springen</a>
+    <header class="site">
+      <div class="wrap">
+        <a class="marke" href="/" aria-label="st.o.lz – Stoff und Holz, zur Startseite">
+          <span><b>st.o.lz</b> <i>Stoff und Holz</i></span>
+        </a>
+        <nav aria-label="Hauptmenü">
+          <ul>
+            {nav.map((n) => (
+              <li><a href={n.href} aria-current={pfad === n.href ? 'page' : undefined}>{n.text}</a></li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="inhalt"><slot /></main>
+    <footer class="site">
+      <div class="wrap">
+        <Bogen />
+        <p class="hand">Klein, fein, handgemacht</p>
+        <ul>
+          <li><a href="https://www.instagram.com/st.o.lz_stoff_und_holz/" rel="noopener">Instagram</a></li>
+          <li><a href="/kontakt/">Kontakt</a></li>
+          <li><a href="/impressum/">Impressum</a></li>
+          <li><a href="/datenschutz/">Datenschutz</a></li>
+        </ul>
+        <p>© {new Date().getFullYear()} Claudia Stehr · st.o.lz | Stoff und Holz · Niddatal</p>
+      </div>
+    </footer>
+    <script is:inline>
+      (function () {
+        var teile = document.querySelectorAll('.zeig');
+        if (!('IntersectionObserver' in window)) { teile.forEach(function (t) { t.classList.add('da'); }); return; }
+        var io = new IntersectionObserver(function (e) {
+          e.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('da'); io.unobserve(x.target); } });
+        }, { rootMargin: '0px 0px -8% 0px' });
+        teile.forEach(function (t) { io.observe(t); });
+      })();
+    </script>
+  </body>
+</html>

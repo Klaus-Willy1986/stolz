@@ -1,0 +1,31 @@
+---
+import Seite from '../../layouts/Seite.astro';
+import Foto from '../../components/Foto.astro';
+import Bogen from '../../components/Bogen.astro';
+---
+<Seite titel="Über mich" beschreibung="Claudia Stehr und ihre kleine Werkstatt in Niddatal.">
+  <section class="block">
+    <div class="wrap zwei">
+      <div>
+        <p class="hand">Hallo, ich bin Claudia</p>
+        <h1>Die Hände hinter st.o.lz</h1>
+        <!-- Nach Claudias eigenen Instagram-Texten geschrieben. Bitte von ihr gegenlesen lassen. -->
+        <p>Vor vielen Jahren hatte ich einen Traum: ein Stand auf einem kleinen Weihnachtsmarkt, mit handgemachter Deko und Kinderkleidung. Dinge aus Stoff und Holz, schlicht, natürlich und mit viel Liebe zur Handarbeit. Der Name dafür war schnell gefunden: st.o.lz.</p>
+        <p>Dann blieb es lange beim Traum. Es fehlten die Zeit und der Mut. Im Herbst 2025 habe ich mich getraut und mit Unterstützung meiner Lieben ein Kleingewerbe angemeldet.</p>
+        <p>Seitdem probiere ich vieles aus: Ich nähe, häkle, gieße, plotte und lasere, ganz nach dem Motto „learning by doing“. Nicht alles klappt beim ersten Versuch. Dann mache ich es wieder auf und fange von vorn an.</p>
+        <p>Das Zeichen in meinem Logo ist eine Baumwollblüte. Sie verbindet Holz und Stoff und steht für Natur, Ursprung und Handarbeit.</p>
+        <p>Du findest mich auf Märkten in der Region und auf <a href="https://www.instagram.com/st.o.lz_stoff_und_holz/" rel="noopener">Instagram</a>, wo ich zeige, woran ich gerade arbeite.</p>
+        <p class="zettel">Etwas Kleines, Feines, auf das ich ganz leise wirklich stolz bin.</p>
+      </div>
+      <Foto zeichnung="herz" unterschrift="Claudia in der Werkstatt" />
+    </div>
+  </section>
+  <section class="block" style="padding-top:0">
+    <div class="wrap mitte text">
+      <Bogen />
+      <h2>Lust auf etwas Eigenes?</h2>
+      <p>Erzähl mir, was du dir vorstellst. Ich sage dir, was möglich ist.</p>
+      <div class="knoepfe"><a class="knopf" href="/kontakt/">Anfrage schreiben</a></div>
+    </div>
+  </section>
+</Seite>

@@ -1,0 +1,19 @@
+---
+import Seite from '../../layouts/Seite.astro';
+import Welle from '../../components/Welle.astro';
+import Termine from '../../components/Termine.astro';
+---
+<Seite titel="Märkte" beschreibung="Auf diesen Märkten findest du den Stand von st.o.lz.">
+  <section class="block" style="padding-bottom:1rem">
+    <div class="wrap text">
+      <p class="hand">Komm vorbei</p>
+      <h1>Märkte und Termine</h1>
+      <p>Am schönsten ist es, die Sachen in die Hand zu nehmen. Auf diesen Märkten findest du meinen Stand. Ich freue mich, wenn du Hallo sagst.</p>
+    </div>
+  </section>
+  <section class="flaeche holzflaeche">
+    <Welle lage="oben" />
+    <div class="wrap"><Termine /></div>
+    <Welle lage="unten" />
+  </section>
+</Seite>
