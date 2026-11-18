@@ -4,6 +4,7 @@ import Seite from '../layouts/Seite.astro';
 import Foto from '../components/Foto.astro';
 import Termine from '../components/Termine.astro';
 import logo from '../assets/logo.png';
+import { fotos } from '../data/fotos';
 const kollektion = [
   { id: 'stoff', name: 'Stoff', text: 'Genäht. Damit hat alles angefangen.' },
   { id: 'holz', name: 'Holz', text: 'Gelasert und graviert, gern mit Namen oder deinem Motiv.' },
@@ -25,7 +26,15 @@ const kollektion = [
     </div>
   </section>
 
-  <section class="block" style="padding-top:0">
+  <section class="galerie" aria-label="Aus der Werkstatt">
+    <div class="wrap">
+      <div class="zeig"><Foto bild={fotos.eichelkoerbchen} alt="Zwei gehäkelte Eichelkörbchen in Salbei und Graublau" /></div>
+      <div class="zeig" style="--warte:.08s"><Foto bild={fotos.lichterkrippe} alt="Tannenbaum aus Holz mit beleuchtetem Stern und Krippenfiguren" /></div>
+      <div class="zeig" style="--warte:.16s"><Foto bild={fotos.kuerbis} alt="Gehäkelter Kürbis in Orange" /></div>
+    </div>
+  </section>
+
+  <section class="block">
     <div class="wrap">
       <div class="kopfzeile zeig">
         <div><p class="hand">Was hier entsteht</p><h2>Stoff, Holz, Garn und Gips</h2></div>
@@ -48,7 +57,7 @@ const kollektion = [
 
   <section class="flaeche salbeiflaeche">
     <div class="wrap zwei">
-      <div class="zeig"><Foto unterschrift="Claudia Stehr" /></div>
+      <div class="zeig"><Foto bild={fotos.claudia} alt="Claudia an der Nähmaschine, gezeichnet" unterschrift="Claudia Stehr" /></div>
       <div class="zeig" style="--warte:.1s">
         <p class="hand">Über st.o.lz</p>
         <h2>Aus einem Traum und einem <em>kleinen bisschen Mut</em></h2>

@@ -1,18 +1,22 @@
 ---
-// Polaroid-Rahmen. Solange kein Foto da ist, zeigt er eine Zeichnung und "Foto folgt".
+// Bildrahmen im Hochformat. Ohne Bild zeigt er eine ruhige Fläche mit "Foto folgt".
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import Zeichnung from './Zeichnung.astro';
 interface Props {
+  bild?: ImageMetadata;
+  alt?: string;
   zeichnung?: 'baumwolle' | 'stoff' | 'holz' | 'garn' | 'gips' | 'herz';
   unterschrift?: string;
-  dreh?: number;
   verkauft?: boolean;
 }
-const { zeichnung = 'baumwolle', unterschrift, dreh = 0, verkauft = false } = Astro.props;
+const { bild, alt = '', zeichnung = 'baumwolle', unterschrift, verkauft = false } = Astro.props;
 ---
-<figure class="foto" style={`--dreh:${dreh}deg`}>
-  <div class="foto-flaeche">
-    <Zeichnung name={zeichnung} groesse={72} />
-    <span class="foto-hinweis">Foto folgt</span>
+<figure class="foto">
+  <div class:list={['foto-flaeche', { 'mit-bild': bild }]}>
+    {bild
+      ? <Image src={bild} alt={alt} class="foto-bild" widths={[320, bild.width]} sizes="(min-width: 48rem) 22rem, 90vw" />
+      : <><Zeichnung name={zeichnung} groesse={72} /><span class="foto-hinweis">Foto folgt</span></>}
     {verkauft && <span class="verkauft">Verkauft</span>}
   </div>
   {unterschrift && <figcaption>{unterschrift}</figcaption>}

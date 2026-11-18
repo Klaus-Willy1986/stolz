@@ -3,6 +3,7 @@ import Seite from '../../layouts/Seite.astro';
 import Foto from '../../components/Foto.astro';
 import Zeichnung from '../../components/Zeichnung.astro';
 import produkte from '../../data/produkte.json';
+import { fotos } from '../../data/fotos';
 const gruppen = [
   { id: 'stoff', titel: 'Stoff' },
   { id: 'holz', titel: 'Holz' },
@@ -24,7 +25,7 @@ const gruppen = [
           <div class="produkte">
             {produkte.filter((p) => p.material === g.id).map((p, i) => (
               <article class="produkt zeig" style={`--warte:${i * 0.08}s`}>
-                <Foto zeichnung={g.id} verkauft={p.verkauft} />
+                <Foto zeichnung={g.id} verkauft={p.verkauft} bild={p.bild ? fotos[p.bild] : undefined} alt={p.name} />
                 <h3>{p.name}</h3>
                 <p>{p.text}</p>
               </article>
